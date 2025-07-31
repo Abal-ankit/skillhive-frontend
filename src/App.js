@@ -3,6 +3,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import ChallengeList from './components/ChallengeList';
 // import AuthLayout from './pages/AuthLayout';
 import logo from './logo.svg';
 import './App.css';
@@ -14,7 +15,8 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='login' element={<Login/>}></Route>
         <Route path='signup' element={<Signup/>}></Route>
-          <Route path='profile' element={<Profile/>}></Route>
+        <Route path='profile' element={<Profile/>}></Route>
+        <Route path='challenges' element={<ChallengeList/>}></Route>
         {/* <Route element={<AuthLayout/>}>
         </Route> */}
       </Routes>
