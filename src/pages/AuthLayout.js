@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { GlobalContext } from "../GlobalContextProvider";
+import Login from "./Login";
+import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
-  return (
-    <div>AuthLayout</div>
-  )
+  const { userName } = useContext(GlobalContext);
+  return <div>{userName ? <Outlet /> : <Login />}</div>;
 }
 
 export default AuthLayout;

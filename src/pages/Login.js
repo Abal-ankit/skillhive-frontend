@@ -1,50 +1,58 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import "../styles/Pages.css";
+import api from "../api";
+import { GlobalContext } from "../GlobalContextProvider";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const { setUserName } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        const payload = {email, password};
-        try {
-            const response = await fetch(
-              "http://localhost:5000/api/auth/login",
-              {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify(payload),
-              }
-            );
-            const user = await response.json();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.post("/auth/login", { email, password });
+      console.log("Login Success:", res.data.user.name);
+      setUserName(res.data.user.name);
 
-            if(response.status !== 200) {
-                console.log(user);
-                return;
-            }
-            
-            localStorage.setItem("token", user.token);
-            navigate('/profile');
+      // You can save token to localStorage
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userName", res.data.user.name);
 
-        } catch (error) {
-            console.log(error);
-        }
+      // Redirect to dashboard or home
+      navigate('/');
+    } catch (err) {
+      console.error("Login Error:", err);
+      setError("Invalid email or password");
     }
+  };
+
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <label>Email: </label>
-            <input type='email' onChange={(e) => setEmail(e.target.value)} value={email}/>
-            <label>Password:</label>
-            <input type='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
-            <button type='submit'>Submit</button>
-        </form>
+    <div className="page-container">
+      <h2>Login</h2>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        {error && <p className="error">{error}</p>}
+        <button type="submit">Login</button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default Login;

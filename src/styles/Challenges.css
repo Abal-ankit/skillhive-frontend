@@ -1,0 +1,145 @@
+/* Layout */
+.ch-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 16px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: #222;
+}
+
+.ch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ch-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Status & opponent */
+.ch-status {
+  margin: 8px 0 16px;
+  color: #0f6;
+  background: #0f61; /* light green tint */
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #0f66;
+}
+
+.ch-opponent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 6px 10px;
+  border: 1px dashed #bbb;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.ch-opponent-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.ch-opponent-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Card */
+.ch-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.ch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ch-badge {
+  display: inline-block;
+  background: #2563eb;       /* blue */
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.ch-question {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ch-description {
+  margin: 10px 0 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Options list */
+.ch-options {
+  list-style: disc;
+  padding-left: 22px;
+  margin: 0 0 14px;
+}
+
+.ch-option {
+  padding: 6px 0;
+}
+
+/* Actions & buttons */
+.ch-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.ch-btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.ch-btn:active {
+  transform: translateY(1px);
+}
+
+.ch-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.ch-btn-primary:hover {
+  background: #1e4fd6;
+}
+
+/* Empty state */
+.ch-empty {
+  padding: 24px;
+  text-align: center;
+  color: #666;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
